@@ -1,0 +1,370 @@
+.sheet-container {
+  padding-top: 80px;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+h2 {
+  font-size: 110px;
+  font-weight: 900;
+  color: #ffcb05;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  padding: 20px 0;
+}
+.sheet {
+  width: 80%;
+  height: 80%;
+  margin: 0 auto;
+  border: 1px solid #333;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+.infos {
+  position: relative;
+  display: flex;
+  height: calc(100% - 100px);
+  border-radius: 15px;
+}
+.pic {
+  width: 45%;
+  height: 100%;
+  padding: 20px;
+}
+.pic img {
+  width: 100%;
+  height: 65%;
+  padding: 0 20px 25px 20px;
+  filter: drop-shadow(2px 2px 10px rgba(255, 255, 255, 0.8));
+}
+.pic p {
+  height: 35%;
+  padding-top: 50px;
+  text-align: center;
+  font-size: 50px;
+  letter-spacing: 1.5px;
+  line-height: 55px;
+  font-weight: 600;
+}
+.titre {
+  width: 100%;
+  text-align: center;
+  font-size: 100px;
+  padding: 20px 0;
+}
+.dimension {
+  padding: 4em 3em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: 55%;
+}
+
+.dimension p {
+  font-size: 55px;
+  margin: 30px;
+}
+.price {
+  position: absolute;
+  top: -10%;
+  right: 5%;
+  font-size: 80px;
+  padding: 35px;
+  border-radius: 9999999px;
+  background: #ffcb05;
+  color: #3b5ba7;
+}
+.achat {
+  width: 100%;
+  height: 70px;
+}
+.achat button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: 1px solid #000;
+  border-radius: 15px;
+  padding: 30px 60px;
+  margin: 0 auto;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  font-size: 60px;
+  font-weight: 500;
+}
+.achat button img {
+  width: 100px;
+  margin-right: 20px;
+  padding: 20px;
+}
+.achat .panier {
+  background: #3b5ba7;
+  color: #ffcb05;
+}
+.achat .panier:hover {
+  color: #3b5ba7;
+  background: #ffcb05;
+}
+.achat .sold_out {
+  cursor: not-allowed;
+  width: 100%;
+  padding: 15px;
+}
+.achat .sold_out span {
+  color: crimson;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 25px;
+}
+/* boutons de navigation */
+.right {
+  position: absolute;
+  top: 50%;
+  right: -7vw;
+  transform: translateY(-50%);
+  width: 7vw;
+  height: 7vw;
+}
+.right button {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+.right p {
+  font-size: 16px;
+  color: #ffcb05;
+}
+.right button:hover {
+  animation: 0.5s linear infinite alternate avance;
+  -webkit-animation: 0.5s linear infinite alternate avance;
+}
+@keyframes avance {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(40%);
+  }
+}
+.left {
+  position: absolute;
+  top: 50%;
+  left: -7vw;
+  transform: translateY(-50%);
+  width: 7vw;
+  height: 7vw;
+}
+.left button {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+.left p {
+  font-size: 16px;
+  color: #ffcb05;
+}
+.left img {
+  transform: rotate(180deg);
+  color: #ffcb05;
+}
+.left button:hover {
+  animation: 0.5s linear infinite alternate recule;
+  -webkit-animation: 0.5s linear infinite alternate recule;
+}
+@keyframes recule {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-40%);
+  }
+}
+
+@media screen and (max-width: 1900px) {
+  .titre {
+    font-size: 90px;
+  }
+  .price {
+    top: -100px;
+    font-size: 75px;
+    padding: 30px;
+  }
+  .achat button {
+    padding: 20px 50px;
+    font-size: 55px;
+  }
+  .dimension p {
+    font-size: 50px;
+    margin: 20px;
+  }
+  .pic p {
+    padding-top: 0;
+  }
+}
+@media screen and (max-width: 1500px) {
+  h2 {
+    font-size: 90px;
+  }
+  .titre {
+    font-size: 70px;
+  }
+  .price {
+    font-size: 55px;
+    padding: 20px;
+  }
+  .achat {
+    height: 30px;
+  }
+  .achat button {
+    padding: 10px 20px;
+    font-size: 25px;
+  }
+  .achat button img {
+    width: 50px;
+    padding: 0;
+  }
+  .dimension p {
+    font-size: 30px;
+    margin: 10px;
+  }
+  .pic p {
+    padding-top: 0;
+    font-size: 20px;
+    line-height: 21px;
+  }
+}
+@media screen and (max-width: 1050px) {
+  h2 {
+    font-size: 60px;
+    padding: 30px 0 0;
+  }
+  .titre {
+    font-size: 50px;
+  }
+  .price {
+    top: -80px;
+    font-size: 40px;
+    padding: 20px;
+  }
+  .achat {
+    height: 25px;
+  }
+  .achat button {
+    padding: 10px 20px;
+    font-size: 20px;
+  }
+  .achat button img {
+    width: 30px;
+    padding: 0;
+  }
+  .dimension {
+    padding: 20px;
+  }
+  .dimension p {
+    font-size: 25px;
+    margin: 10px;
+  }
+  .pic img {
+    padding: 10px;
+  }
+  .pic p {
+    font-size: 19px;
+    line-height: 19px;
+  }
+}
+@media screen and (max-width: 800px) {
+  h2 {
+    font-size: 50px;
+  }
+  .titre {
+    font-size: 40px;
+  }
+  .price {
+    top: -70px;
+    font-size: 30px;
+    padding: 10px;
+  }
+  .dimension {
+    padding: 0px;
+  }
+  .dimension p {
+    font-size: 20px;
+    margin: 10px;
+  }
+  .pic p {
+    font-size: 15px;
+    line-height: 15px;
+  }
+  .achat .sold_out span {
+    font-size: 20px;
+  }
+  .right p,
+  .left p {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 650px) {
+  h2 {
+    font-size: 45px;
+  }
+  .titre {
+    font-size: 30px;
+  }
+  .price {
+    top: -50px;
+    font-size: 20px;
+    padding: 5px;
+  }
+  .dimension p {
+    font-size: 15px;
+  }
+  .pic {
+    padding: 5px;
+  }
+  .pic p {
+    font-size: 12px;
+    line-height: 12px;
+  }
+  .right p,
+  .left p {
+    display: none;
+  }
+}
+@media screen and (max-width: 550px) {
+  h2 {
+    font-size: 40px;
+  }
+  .titre {
+    font-size: 20px;
+  }
+  .price {
+    font-size: 12px;
+    padding: 5px;
+  }
+  .dimension p {
+    margin: 0 5px 0 0;
+  }
+  .achat button {
+    font-size: 0px;
+    padding: 20px;
+  }
+  .achat button img {
+    margin: 0;
+  }
+  .pic img {
+    height: 50%;
+  }
+  .achat .sold_out {
+    padding: 10px;
+  }
+  .achat .sold_out span {
+    font-size: 15px;
+  }
+}
