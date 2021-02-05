@@ -1,5 +1,5 @@
 <template>
-    <button class="back"><router-link to='/'><img src="/assets/back-arrow.svg"> Continuer mes achats</router-link></button>
+    <button class="back"><router-link to='/'><img src="../assets/back-arrow.png"> Continuer mes achats</router-link></button>
 </template>
 
 <script>

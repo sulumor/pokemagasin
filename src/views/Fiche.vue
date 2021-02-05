@@ -35,7 +35,7 @@
                 type="button"
                 class="panier"
               >
-                <img src="/assets/add-to-basket.svg" />
+                <img src="../assets/add-to-basket.png" />
                 Ajouter au panier
               </button>
               <button
@@ -55,11 +55,11 @@
               v-if="this.id < 151"
               :to="`/${pokemons[this.id].id}/${pokemons[this.id].name}`"
             >
-              <img src="/assets/next.svg" alt="" />
+              <img src="../assets/next.png" alt="" />
               <p>{{ pokemons[this.id].name }}</p></router-link
             >
             <router-link v-else :to="`/${pokemons[0].id}/${pokemons[0].name}`"
-              ><img src="/assets/next.svg" alt="" />
+              ><img src="../assets/next.png" alt="" />
               <p>{{ pokemons[0].name }}</p>
             </router-link>
           </button>
@@ -70,13 +70,13 @@
               v-if="this.id > 1"
               :to="`/${pokemons[this.id - 2].id}/${pokemons[this.id - 2].name}`"
             >
-              <img src="/assets/next.svg" alt="" />
+              <img src="../assets/next.png" alt="" />
               <p>{{ pokemons[this.id - 2].name }}</p>
             </router-link>
             <router-link
               v-else
               :to="`/${pokemons[150].id}/${pokemons[150].name}`"
-              ><img src="/assets/next.svg" alt="" />
+              ><img src="../assets/next.png" alt="" />
               <p>{{ pokemons[150].name }}</p>
             </router-link>
           </button>

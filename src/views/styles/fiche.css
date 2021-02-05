@@ -134,6 +134,9 @@ h2 {
   outline: none;
   border: none;
   background: transparent;
+}.right img{
+  width: 7vw;
+  height: 7vw;
 }
 .right p {
   font-size: 16px;
@@ -171,6 +174,8 @@ h2 {
   color: #ffcb05;
 }
 .left img {
+  width: 7vw;
+  height: 7vw;
   transform: rotate(180deg);
   color: #ffcb05;
 }
