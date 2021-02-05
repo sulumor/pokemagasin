@@ -25,7 +25,7 @@
         <p v-show="pokemon.stock === 0" class="sold-out">Rupture de stock</p>
         <div v-show="pokemon.stock > 0" class="addCart">
           <button v-on:click="addToCart(pokemon)" type="button">
-            <img src="..\assets\add-to-basket.svg" />
+            <img src="@\assets\add-to-basket.svg" />
             <p>Ajouter au panier</p>
           </button>
         </div>

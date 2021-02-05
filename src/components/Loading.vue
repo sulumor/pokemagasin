@@ -3,11 +3,11 @@
     <div class="loadingPage">
       <div class="loading">
         <p>CHARGEMENT</p>
-        <img src="../assets/loading/pikachu.svg" alt="pikachu" />
-        <img src="../assets/loading/bullbasaur.svg" alt="bulbizare" />
-        <img src="../assets/loading/caterpie.svg" alt="pikachu" />
-        <img src="../assets/loading/rattata.svg" alt="rattata" />
-        <img src="../assets/loading/zubat.svg" alt="pikachu" />
+        <img src="@/assets/loading/pikachu.svg" alt="pikachu" />
+        <img src="@/assets/loading/bullbasaur.svg" alt="bulbizare" />
+        <img src="@/assets/loading/caterpie.svg" alt="pikachu" />
+        <img src="@/assets/loading/rattata.svg" alt="rattata" />
+        <img src="@/assets/loading/zubat.svg" alt="pikachu" />
       </div>
     </div>
   </transition>
