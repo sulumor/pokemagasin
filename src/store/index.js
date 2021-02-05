@@ -26,7 +26,43 @@ export default new Vuex.Store({
       ice: "#96d9d6",
     },
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    INCREASE_CART(state, id){
+      
+      state.cart.push({
+        id: this.state.pokemons[id-1].id,
+        pic: this.state.pokemons[id-1].pic2,
+        name: this.state.pokemons[id-1].name,
+        price: this.state.pokemons[id-1].price,
+        stock: this.state.pokemons[id-1].stock-- -1,
+        type: this.state.pokemons[id-1].type,
+        quantity: 1
+      });
+    }
+  },
+  actions: {
+    addToCart({commit}, id){
+      // voir si un pokemon est déjà dans le panier, si oui incrementer la quantité
+      for(let i = 0; i < this.state.cart.length; i++){
+        if(this.state.cart[i].id === this.state.pokemons[id - 1].id){
+          return(
+            this.state.cart[i].quantity++,
+            this.state.cart[i].stock--,
+            this.state.pokemons[id - 1].stock--
+          );
+        }
+      }
+
+      // mettre le pokemon dans panier
+      commit('INCREASE_CART', id)
+
+      // classer dans l'ordre d'id dans panier
+      if(this.state.cart.length > 1){
+        this.state.cart.sort((a, b) =>{
+          return a.id - b.id;
+        })
+      }
+    }
+  },
   modules: {},
 });

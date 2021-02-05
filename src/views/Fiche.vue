@@ -31,7 +31,7 @@
             <div class="achat">
               <button
                 v-show="pokemons[this.id - 1].stock > 0"
-                v-on:click="addToCart('pokemons[this.id - 1]')"
+                v-on:click="addToCart()"
                 type="button"
                 class="panier"
               >
@@ -88,10 +88,12 @@
 
 <script>
 import { mapState } from "vuex";
+import store from "../store/index";
 import Retour from "../components/Retour";
 
 export default {
   components: { Retour },
+  store: store,
   name: "Fiche",
   data() {
     return {
@@ -100,46 +102,19 @@ export default {
     };
   },
   methods: {
-    cardColor: function (poke) {
+    addToCart() {
+      this.$store.dispatch("addToCart", this.id);
+    },
+    cardColor(poke) {
       let color = this.types[poke.type];
       return color;
     },
-    addToCart: function (pokemon) {
-      pokemon;
-      for (let i = 0; i < this.cart.length; i++) {
-        if (this.cart[i].id === this.pokemons[this.id - 1].id) {
-          return (
-            this.cart[i].quantity++,
-            this.cart[i].stock--,
-            this.pokemons[this.cart[i].id - 1].stock--
-          );
-        }
-      }
-
-      this.cart.push({
-        id: this.pokemons[this.id - 1].id,
-        pic: this.pokemons[this.id - 1].pic2,
-        name: this.pokemons[this.id - 1].name,
-        price: this.pokemons[this.id - 1].price,
-        stock: this.pokemons[this.id - 1].stock-- - 1,
-        type: this.pokemons[this.id - 1].type,
-        quantity: 1,
-      });
-
-      this.cart.stock--;
-
-      if (this.cart.length > 1) {
-        this.cart.sort((a, b) => {
-          return a.id - b.id;
-        });
-      }
-    },
-    pokeSuivant: function () {
+    pokeSuivant() {
       this.id = parseInt(this.id);
       if (this.id === 151) this.id = 1;
       else this.id = this.id + 1;
     },
-    pokePrecedent: function () {
+    pokePrecedent() {
       this.id = parseInt(this.id);
       if (this.id === 1) this.id = 151;
       else this.id = this.id - 1;

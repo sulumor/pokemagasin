@@ -56,36 +56,10 @@ export default {
     };
   },
   methods: {
-    addToCart: function (pokemon) {
-      for (let i = 0; i < this.$store.state.cart.length; i++) {
-        if (this.$store.state.cart[i].id === pokemon.id) {
-          return (
-            this.$store.state.cart[i].quantity++,
-            this.$store.state.cart[i].stock--,
-            this.$store.state.pokemons[this.$store.state.cart[i].id - 1].stock--
-          );
-        }
-      }
-
-      this.$store.state.cart.push({
-        id: pokemon.id,
-        pic: pokemon.pic2,
-        name: pokemon.name,
-        price: pokemon.price,
-        stock: pokemon.stock-- - 1,
-        type: pokemon.type,
-        quantity: 1,
-      });
-
-      this.$store.state.cart.stock--;
-
-      if (this.$store.state.cart.length > 1) {
-        this.$store.state.cart.sort((a, b) => {
-          return a.id - b.id;
-        });
-      }
+    addToCart(pokemon) {
+      this.$store.dispatch("addToCart", pokemon.id )
     },
-    fetchPokemonComplet: function (pokemon) {
+    fetchPokemonComplet(pokemon) {
       if (this.$store.state.pokemons.length < 151) {
         const objPokemon = {};
 
@@ -137,14 +111,14 @@ export default {
         });
       }
     },
-    cardColor: function (pokemon) {
+    cardColor(pokemon) {
       let color = this.$store.state.types[pokemon.type];
       return color;
     },
-    changementListe: function (nvFiltre) {
+    changementListe(nvFiltre) {
       this.filtreType = nvFiltre;
     },
-    recherchePoke: function (nvPoke) {
+    recherchePoke(nvPoke) {
       this.searchPoke = nvPoke;
     },
   },
