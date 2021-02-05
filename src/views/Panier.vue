@@ -13,7 +13,7 @@
       </div>
       <div class="englobant">
         <div style="flex: 5">
-          <transition-group name="fade">
+          
             <div
               v-bind:key="id"
               v-for="(pokemonPanier, id) in cart"
@@ -27,13 +27,13 @@
               />
               <div class="quantity">
                 <button v-on:click="plusQuantity(pokemonPanier)" type="button">
-                  <img src="@/assets/plus.svg" />
+                  <img src="/assets/plus.svg" />
                 </button>
                 <button
                   v-on:click="minusQuantity(pokemonPanier, id)"
                   type="button"
                 >
-                  <img src="@/assets/minus.svg" />
+                  <img src="/assets/minus.svg" />
                 </button>
                 <p>
                   {{ pokemonPanier.quantity }} {{ pokemonPanier.name
@@ -50,10 +50,10 @@
                 type="button"
                 class="remove"
               >
-                <img src="@/assets/delete.svg" />
+                <img src="/assets/delete.svg" />
               </button>
             </div>
-          </transition-group>
+          
         </div>
         <div v-show="cart != ''" class="resumeCart">
           <div class="overlay">
@@ -76,7 +76,7 @@
             </div>
 
             <button class="commande" type="button">
-              <img src="@/assets/pokeball-color.svg" alt="pokeball" />Confirmer
+              <img src="/assets/pokeball-color.svg" alt="pokeball" />Confirmer
               la commande
             </button>
           </div>

@@ -7,7 +7,7 @@
       </li>
       <li >
         <router-link to="/panier" class="cartPic"
-          ><img src="@/assets/add-to-basket.svg" alt="" />
+          ><img src="/assets/add-to-basket.svg" alt="" />
         <p v-show="cart.length > 0">{{ cart.length }}</p>
         </router-link>
       </li>
