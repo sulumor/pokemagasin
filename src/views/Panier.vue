@@ -13,47 +13,57 @@
       </div>
       <div class="englobant">
         <div style="flex: 5">
-          
-            <div
-              v-bind:key="id"
-              v-for="(pokemonPanier, id) in cart"
-              v-bind:style="{ background: cardColor(pokemonPanier) }"
-              class="panier"
-            >
-              <img
-                :src="pokemonPanier.pic"
-                :alt="pokemonPanier.name"
-                class="pic"
-              />
-              <div class="quantity">
-                <button v-on:click="plusQuantity(pokemonPanier)" type="button">
-                  <img src="../assets/plus.png" />
-                </button>
-                <button
-                  v-on:click="minusQuantity(pokemonPanier, id)"
-                  type="button"
-                >
-                  <img src="../assets/minus.png" />
-                </button>
-                <p>
-                  {{ pokemonPanier.quantity }} {{ pokemonPanier.name
-                  }}<span v-show="pokemonPanier.quantity > 1">s</span>
-                </p>
-              </div>
-              <p>Prix Unitaire: <br />{{ pokemonPanier.price }}€</p>
-              <p>
-                Total : <br />{{ pokemonPanier.price * pokemonPanier.quantity }}
-                €
-              </p>
+          <div
+            v-bind:key="id"
+            v-for="(pokemonPanier, id) in cart"
+            v-bind:style="{ background: cardColor(pokemonPanier) }"
+            class="panier"
+          >
+          <span class="price">{{pokemonPanier.price}} €</span>
+            <img
+              :src="pokemonPanier.pic"
+              :alt="pokemonPanier.name"
+              class="pic"
+            />
+            <div class="btn-container">
+              <button v-on:click="plusQuantity(pokemonPanier)" type="button">
+                <img src="../assets/plus.png" />
+              </button>
               <button
-                v-on:click="removeCart(pokemonPanier, id)"
+                v-on:click="minusQuantity(pokemonPanier, id)"
                 type="button"
-                class="remove"
               >
-                <img src="../assets/delete.png" />
+                <img src="../assets/minus.png" />
               </button>
             </div>
-          
+            <div class="quantity">
+              <p class="desktop">
+                {{ pokemonPanier.quantity }} {{ pokemonPanier.name
+                }}<span v-show="pokemonPanier.quantity > 1">s</span>
+              </p>
+              <p class="mobile">
+                {{ pokemonPanier.quantity }}
+              </p>
+              <p v-show="pokemonPanier.stock === 0" class="sold-out">
+                Rupture de stock
+              </p>
+            </div>
+            <p class="desktop">
+              Total : {{ pokemonPanier.price * pokemonPanier.quantity }}
+              €
+            </p>
+            <p class="mobile">
+              {{ pokemonPanier.price * pokemonPanier.quantity }}
+              €
+            </p>
+            <button
+              v-on:click="removeCart(pokemonPanier, id)"
+              type="button"
+              class="remove"
+            >
+              <img src="../assets/delete.png" />
+            </button>
+          </div>
         </div>
         <div v-show="cart != ''" class="resumeCart">
           <div class="overlay">

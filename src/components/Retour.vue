@@ -20,6 +20,7 @@ export default {
   outline: none;
   border: 1px solid #000;
   border-radius: 15px;
+  background: rgba(255, 255, 255, 0.7);
   padding: 10px 20px;
   margin: 0 auto;
   transition: all 0.5s ease;

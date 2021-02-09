@@ -74,6 +74,11 @@ export default {
                   pokeData.data.flavor_text_entries[i].flavor_text;
               }
             }
+          })
+          .catch((err) =>{
+            console.log(err);
+            objPokemon.name = "indefini";
+            objPokemon.description = "indisponible suite erreur"
           });
         axios.get(pokemon.url).then((pokeData) => {
           objPokemon.pic1 =
@@ -97,6 +102,7 @@ export default {
               4) *
               1.5
           );
+          
 
           this.$store.state.pokemons = [
             ...this.$store.state.pokemons,
@@ -108,7 +114,16 @@ export default {
               return a.id - b.id;
             });
           }
-        });
+        })
+        .catch((err) => {
+            console.log(err);
+            objPokemon.type = "indefini";
+            objPokemon.id = "erreur";
+            objPokemon.life = 100;
+            objPokemon.attack = 100;
+            objPokemon.defense = 100;
+            objPokemon.speed = 100;
+          });
       }
     },
     cardColor(pokemon) {

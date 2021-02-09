@@ -51,8 +51,10 @@ export default {
     width: 40%;
     font-family: "Roboto", sans-serif;
     border-radius: 15px;
+    border: 1px solid #3b5ba7;
     font-weight: 600;
     font-size: 15px;
+    outline: none;
 }
 @media screen and (max-width: 550px) {
   .selectType {

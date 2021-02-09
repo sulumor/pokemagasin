@@ -35,12 +35,22 @@
   display: flex;
 }
 .panier {
+  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin: 10px;
   border: 2px solid #333;
   box-shadow: 3px 3px 10px 5px rgba(255, 255, 255, 0.2);
+}
+.panier .price {
+  position: absolute;
+  top: 10px;
+  left: -5px;
+  transform: rotate(-45deg);
+  padding: 2px 10px;
+  background: transparent;
+  color: #ffcb05;
 }
 .pic {
   width: 100px;
@@ -49,7 +59,10 @@
   flex: 1;
 }
 .panier p,
-.panier span {
+.panier span,
+.desktop,
+.desktop span,
+.mobile {
   flex: 1;
   font-size: 25px;
   font-weight: 600;
@@ -60,12 +73,20 @@
 }
 .quantity {
   flex: 1;
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
-.quantity button,
+.btn-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.btn-container button,
 .remove {
   width: 40px;
   height: 40px;
@@ -75,11 +96,20 @@
   border-radius: 50%;
   padding: 5px;
 }
-.remove {
-  margin-right: 10px;
+.mobile {
+  display: none;
+  padding: 0 20px;
+}
+.quantity .sold-out {
+  width: 100%;
+  font-size: 25px;
+  color: crimson;
+  font-weight: 800;
+  /* text-align: center; */
+  z-index: 2;
 }
 .remove img,
-.quantity button img {
+.btn-container button img {
   width: 20px;
   height: 20px;
 }
@@ -117,7 +147,7 @@
   text-transform: uppercase;
   font-size: 30px;
   font-weight: 600;
-  letter-spacing: 1.5;
+  letter-spacing: 1.5px;
   padding: 5px;
   color: #ffcb05;
 }
@@ -153,12 +183,14 @@
   top: -15px;
 }
 
-
 @media screen and (max-width: 1250px) {
   .quantity button {
     margin: 0 3px;
   }
-  .panier p {
+  .panier p,
+  .panier span,
+  .desktop,
+  .desktop span {
     font-size: 20px;
   }
   .commande {
@@ -166,17 +198,15 @@
   }
 }
 @media screen and (max-width: 900px) {
-  .quantity button {
+  .btn-container button,
+  .remove {
     height: 25px;
-    margin: 5px 3px;
     width: 25px;
   }
-  .quantity button img {
+  .btn-container button img,
+  .remove img {
     height: 15px;
     width: 15px;
-  }
-  .quantity p {
-    display: none;
   }
   .cart h2 {
     font-size: 45px;
@@ -188,11 +218,12 @@
     width: 60px;
     height: 60px;
   }
-  .panier p {
+  .panier p,
+  .panier span,
+  .desktop,
+  .desktop span,
+  .quantity .sold-out {
     font-size: 18px;
-  }
-  .remove {
-    margin: 0;
   }
   .englobant {
     flex-direction: column;
@@ -208,7 +239,19 @@
   .empty p {
     font-size: 30px;
   }
-  .panier p {
+  .panier p,
+  .panier span,
+  .desktop,
+  .mobile p,
+  .quantity .sold-out {
     font-size: 12px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: block;
   }
 }
