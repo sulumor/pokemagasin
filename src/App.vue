@@ -115,6 +115,7 @@ video {
   text-decoration: none;
   color: #000;
   font-family: "Chakra Petch", sans-serif;
+  scroll-behavior: smooth;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -210,7 +211,6 @@ body {
       rgba(86, 86, 86, 0.02) 100%
     ),
 	linear-gradient(90deg, hsl(194, 0%, 10%), hsl(194, 0%, 10%));
-	scroll-behavior: smooth;
 }
 ol,
 ul {

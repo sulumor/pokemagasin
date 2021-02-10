@@ -44,9 +44,6 @@
               <p class="mobile">
                 {{ pokemonPanier.quantity }}
               </p>
-              <p v-show="pokemonPanier.stock === 0" class="sold-out">
-                Rupture de stock
-              </p>
             </div>
             <p class="desktop">
               Total : {{ pokemonPanier.price * pokemonPanier.quantity }}

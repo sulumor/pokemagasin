@@ -14,7 +14,7 @@
         class="card"
       >
         <router-link v-bind:to="`/${pokemon.id}/${pokemon.name}`">
-          <p class="id"># {{ pokemon.id }}</p>
+          <p class="id" :id="pokemon.id"># {{ pokemon.id }}</p>
           <p v-show="pokemon.stock === 1" class="stock">Dernier dispo</p>
           <img v-bind:src="pokemon.pic1" :alt="pokemon.name" class="picPoke" />
           <div class="namePrice">
