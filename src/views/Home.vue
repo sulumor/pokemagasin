@@ -77,8 +77,8 @@ export default {
           })
           .catch((err) =>{
             console.log(err);
-            objPokemon.name = "indefini";
-            objPokemon.description = "indisponible suite erreur"
+            objPokemon.name = "Nom indéfini suite erreur";
+            objPokemon.description = "Description indisponible suite de chargement - réessayer plus tard"
           });
         axios.get(pokemon.url).then((pokeData) => {
           objPokemon.pic1 =
