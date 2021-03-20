@@ -36,9 +36,9 @@
 
 <script>
 import axios from "axios";
-import store from '../store/index'
+import store from "../store/index";
 import Choice from "../components/Choice";
-import Selection from "../components/Selection"
+import Selection from "../components/Selection";
 import Searchbar from "../components/Searchbar";
 
 export default {
@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     addToCart(pokemon) {
-      this.$store.dispatch("addToCart", pokemon.id )
+      this.$store.dispatch("addToCart", pokemon.id);
     },
     fetchPokemonComplet(pokemon) {
       if (this.$store.state.pokemons.length < 151) {
@@ -75,54 +75,69 @@ export default {
               }
             }
           })
-          .catch((err) =>{
+          .catch((err) => {
             console.log(err);
             objPokemon.name = "Nom indéfini";
-            objPokemon.description = "Description indisponible suite erreur de chargement - réessayer plus tard"
+            objPokemon.description =
+              "Description indisponible suite erreur de chargement - réessayer plus tard";
           });
-        axios.get(pokemon.url).then((pokeData) => {
-          objPokemon.pic1 =
-            pokeData.data.sprites.other["official-artwork"].front_default;
-          objPokemon.pic2 =
-            pokeData.data.sprites.other.dream_world.front_default;
-          objPokemon.type = pokeData.data.types[0].type.name;
-          objPokemon.id = pokeData.data.id;
-          objPokemon.life = pokeData.data.stats[0].base_stat;
-          objPokemon.attack = pokeData.data.stats[1].base_stat;
-          objPokemon.defense = pokeData.data.stats[2].base_stat;
-          objPokemon.speed = pokeData.data.stats[5].base_stat;
-          objPokemon.height = pokeData.data.height;
-          objPokemon.weight = pokeData.data.weight;
-          objPokemon.stock = Math.trunc(Math.random() * 5);
-          objPokemon.price = Math.trunc(
-            ((objPokemon.life +
-              objPokemon.attack +
-              objPokemon.defense +
-              objPokemon.speed) /
-              4) *
-              1.5
-          );
-          
+        axios
+          .get(pokemon.url)
+          .then((pokeData) => {
+            objPokemon.pic1 =
+              pokeData.data.sprites.other["official-artwork"].front_default;
+            objPokemon.pic2 =
+              pokeData.data.sprites.other.dream_world.front_default;
+            objPokemon.type = pokeData.data.types[0].type.name;
+            objPokemon.id = pokeData.data.id;
+            objPokemon.life = pokeData.data.stats[0].base_stat;
+            objPokemon.attack = pokeData.data.stats[1].base_stat;
+            objPokemon.defense = pokeData.data.stats[2].base_stat;
+            objPokemon.speed = pokeData.data.stats[5].base_stat;
+            objPokemon.height = pokeData.data.height;
+            objPokemon.weight = pokeData.data.weight;
+            objPokemon.stock = Math.trunc(Math.random() * 5);
+            objPokemon.price = Math.trunc(
+              ((objPokemon.life +
+                objPokemon.attack +
+                objPokemon.defense +
+                objPokemon.speed) /
+                4) *
+                1.5
+            );
 
-          this.$store.state.pokemons = [
-            ...this.$store.state.pokemons,
-            objPokemon,
-          ];
+            this.$store.state.pokemons = [
+              ...this.$store.state.pokemons,
+              objPokemon,
+            ];
 
-          if (this.$store.state.pokemons.length == 151) {
-            this.$store.state.pokemons.sort((a, b) => {
-              return a.id - b.id;
-            });
-          }
-        })
-        .catch((err) => {
+            if (this.$store.state.pokemons.length == 151) {
+              this.$store.state.pokemons.sort((a, b) => {
+                return a.id - b.id;
+              });
+            }
+          })
+          .catch((err) => {
             console.log(err);
+            objPokemon.pic1 = "pokemon";
+            objPokemon.pic2 = "pokemon";
             objPokemon.type = "indefini";
             objPokemon.id = "erreur";
             objPokemon.life = 100;
             objPokemon.attack = 100;
             objPokemon.defense = 100;
             objPokemon.speed = 100;
+            objPokemon.height = 100;
+            objPokemon.weight = 100;
+            objPokemon.stock = Math.trunc(Math.random() * 5);
+            objPokemon.price = Math.trunc(
+              ((objPokemon.life +
+                objPokemon.attack +
+                objPokemon.defense +
+                objPokemon.speed) /
+                4) *
+                1.5
+            );
           });
       }
     },
@@ -158,6 +173,5 @@ export default {
     });
   },
 };
-
 </script>
 <style scoped src="./styles/home.css"></style>
