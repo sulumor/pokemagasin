@@ -111,23 +111,16 @@ export default {
             console.log(err);
             objPokemon.pic1 = "pokemon";
             objPokemon.pic2 = "pokemon";
-            objPokemon.type = " ";
+            objPokemon.type = "undefined";
             objPokemon.id = 404;
-            objPokemon.life = 100;
-            objPokemon.attack = 100;
-            objPokemon.defense = 100;
-            objPokemon.speed = 100;
-            objPokemon.height = 100;
-            objPokemon.weight = 100;
+            objPokemon.life = "404 error";
+            objPokemon.attack = "404 error";
+            objPokemon.defense = "404 error";
+            objPokemon.speed = "404 error";
+            objPokemon.height = "404 error";
+            objPokemon.weight = "404 error";
             objPokemon.stock = Math.trunc(Math.random() * 5);
-            objPokemon.price = Math.trunc(
-              ((objPokemon.life +
-                objPokemon.attack +
-                objPokemon.defense +
-                objPokemon.speed) /
-                4) *
-                1.5
-            );
+            objPokemon.price = "404";
           });
 
           this.$store.state.pokemons = [

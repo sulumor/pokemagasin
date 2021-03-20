@@ -12,7 +12,7 @@
         <p class="titre"># {{ this.id }} {{ pokemons[this.id - 1].name }}</p>
         <div class="infos">
           <div class="pic">
-            <img :src="pokemons[this.id - 1].pic2" alt="" />
+            <img :src="pokemons[this.id - 1].pic2" alt="{{ pokemons[this.id - 1].name }}" />
             <p>{{ pokemons[this.id - 1].description }}</p>
           </div>
           <div class="dimension">

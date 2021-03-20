@@ -24,6 +24,7 @@ export default new Vuex.Store({
       rock: "#b6a136",
       ghost: "#735797",
       ice: "#96d9d6",
+      undefined: "#60756E"
     },
   },
   mutations: {
