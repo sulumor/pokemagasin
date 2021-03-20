@@ -18,6 +18,7 @@
     <button v-on:click="filtrePoke('ghost')" type="button">Spectre</button>
     <button v-on:click="filtrePoke('fairy')" type="button">Fee</button>
     <button v-on:click="filtrePoke('ice')" type="button">Glace</button>
+    <button v-on:click="filtrePoke('indefini')" type="button">Indéfini</button>
   </div>
 </template>
 
