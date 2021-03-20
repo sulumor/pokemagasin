@@ -17,7 +17,6 @@
       <option value="ghost">Spectre</option>
       <option value="fairy">Fee</option>
       <option value="ice">Glace</option>
-      <option value="indefini">Indéfini</option>
     </select>
     <div class="goTo">
       <h6>Allez au Pokemon n°</h6>

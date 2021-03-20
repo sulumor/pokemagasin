@@ -112,7 +112,7 @@ export default {
             console.log(err);
             objPokemon.pic1 = "pokemon";
             objPokemon.pic2 = "pokemon";
-            objPokemon.type = "indefini";
+            objPokemon.type = "";
             objPokemon.id = 404;
             objPokemon.life = 100;
             objPokemon.attack = 100;
