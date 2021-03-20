@@ -106,13 +106,12 @@ export default {
                 1.5
             );
 
-            
           })
           .catch((err) => {
             console.log(err);
             objPokemon.pic1 = "pokemon";
             objPokemon.pic2 = "pokemon";
-            objPokemon.type = "";
+            objPokemon.type = " ";
             objPokemon.id = 404;
             objPokemon.life = 100;
             objPokemon.attack = 100;
@@ -135,12 +134,11 @@ export default {
               ...this.$store.state.pokemons,
               objPokemon,
             ];
-
-            if (this.$store.state.pokemons.length == 151) {
-              this.$store.state.pokemons.sort((a, b) => {
-                return a.id - b.id;
-              });
-            }
+      }
+      if (this.$store.state.pokemons.length == 151) {
+        this.$store.state.pokemons.sort((a, b) => {
+          return a.id - b.id;
+        });
       }
     },
     cardColor(pokemon) {
