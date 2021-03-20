@@ -51,8 +51,8 @@ export default {
   },
   data() {
     return {
-      filtreType: "",
-      searchPoke: "",
+      filtreType: '',
+      searchPoke: '',
     };
   },
   methods: {
