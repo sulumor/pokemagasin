@@ -51,8 +51,8 @@ export default {
   },
   data() {
     return {
-      filtreType: '',
-      searchPoke: '',
+      filtreType: "",
+      searchPoke: "",
     };
   },
   methods: {
@@ -106,32 +106,37 @@ export default {
                 1.5
             );
 
-          })
-          .catch((err) => {
-            console.log(err);
-            objPokemon.pic1 = "pokemon";
-            objPokemon.pic2 = "pokemon";
-            objPokemon.type = "undefined";
-            objPokemon.id = 404;
-            objPokemon.life = "404 error";
-            objPokemon.attack = "404 error";
-            objPokemon.defense = "404 error";
-            objPokemon.speed = "404 error";
-            objPokemon.height = "404 error";
-            objPokemon.weight = "404 error";
-            objPokemon.stock = Math.trunc(Math.random() * 5);
-            objPokemon.price = "404";
-          });
-
-          this.$store.state.pokemons = [
+            this.$store.state.pokemons = [
               ...this.$store.state.pokemons,
               objPokemon,
             ];
-      }
-      if (this.$store.state.pokemons.length == 151) {
-        this.$store.state.pokemons.sort((a, b) => {
-          return a.id - b.id;
-        });
+
+            this.$store.state.pokemons.sort((a, b) => {
+              return a.id - b.id;
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+            objPokemon.type = "undefined";
+            objPokemon.id = "404";
+            objPokemon.life = "Err";
+            objPokemon.attack = "Err";
+            objPokemon.defense = "Err";
+            objPokemon.speed = "Err";
+            objPokemon.height = "Err";
+            objPokemon.weight = "Err";
+            objPokemon.stock = 0;
+            objPokemon.price = "Err";
+
+            this.$store.state.pokemons = [
+              ...this.$store.state.pokemons,
+              objPokemon,
+            ];
+
+            this.$store.state.pokemons.sort((a, b) => {
+              return a.id - b.id;
+            });
+          });
       }
     },
     cardColor(pokemon) {
