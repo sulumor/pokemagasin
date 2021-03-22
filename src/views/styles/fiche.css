@@ -43,9 +43,9 @@ h2 {
   height: 35%;
   padding-top: 50px;
   text-align: center;
-  font-size: 50px;
+  font-size: 2.7vh;
   letter-spacing: 1.5px;
-  line-height: 55px;
+  line-height: 2.7vh;
   font-weight: 600;
 }
 .titre {
@@ -93,7 +93,7 @@ h2 {
   margin: 0 auto;
   transition: all 0.5s ease;
   cursor: pointer;
-  font-size: 60px;
+  font-size: 4vh;
   font-weight: 500;
 }
 .achat button img {
@@ -104,6 +104,7 @@ h2 {
 .achat .panier {
   background: #3b5ba7;
   color: #ffcb05;
+  height: 110%;
 }
 .achat .panier:hover {
   color: #3b5ba7;
@@ -242,8 +243,10 @@ h2 {
   }
   .pic p {
     padding-top: 0;
-    font-size: 20px;
-    line-height: 21px;
+    font-size: 2.3vh;
+    height: 55%;
+    line-height: 2.3vh;
+    text-align: justify;
   }
 }
 @media screen and (max-width: 1050px) {
@@ -280,10 +283,7 @@ h2 {
   .pic img {
     padding: 10px;
   }
-  .pic p {
-    font-size: 19px;
-    line-height: 19px;
-  }
+  
 }
 @media screen and (max-width: 800px) {
   h2 {
@@ -303,10 +303,6 @@ h2 {
   .dimension p {
     font-size: 20px;
     margin: 10px;
-  }
-  .pic p {
-    font-size: 15px;
-    line-height: 15px;
   }
   .achat .sold_out span {
     font-size: 20px;
@@ -333,10 +329,6 @@ h2 {
   }
   .pic {
     padding: 5px;
-  }
-  .pic p {
-    font-size: 12px;
-    line-height: 12px;
   }
   .right p,
   .left p {
