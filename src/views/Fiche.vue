@@ -36,7 +36,7 @@
                 class="panier"
               >
                 <img src="../assets/add-to-basket.png" />
-                Ajouter au panier
+                <span>Ajouter au panier</span>
               </button>
               <button
                 v-show="pokemons[this.id - 1].stock == 0"

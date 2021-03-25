@@ -101,25 +101,35 @@ h2 {
   margin-right: 20px;
   padding: 20px;
 }
-.achat .panier {
-  background: #3b5ba7;
-  color: #ffcb05;
-  height: 110%;
-}
-.achat .panier:hover {
-  color: #3b5ba7;
-  background: #ffcb05;
-}
+.achat .panier,
 .achat .sold_out {
-  cursor: not-allowed;
   width: 100%;
   padding: 15px;
 }
+.achat .panier {
+  background: #3b5ba7;
+}
+
+.achat .panier span,
 .achat .sold_out span {
-  color: crimson;
   font-weight: 900;
   text-transform: uppercase;
   font-size: 25px;
+}
+.achat .panier span {
+  color: #ffcb05;
+}
+.achat .panier:hover {
+  background: #ffcb05;
+}
+.achat .panier:hover span {
+  color: #3b5ba7;
+}
+.achat .sold_out {
+  cursor: not-allowed;
+}
+.achat .sold_out span {
+  color: crimson;
 }
 /* boutons de navigation */
 .right {
@@ -136,7 +146,8 @@ h2 {
   outline: none;
   border: none;
   background: transparent;
-}.right img{
+}
+.right img {
   width: 7vw;
   height: 7vw;
 }
@@ -283,7 +294,6 @@ h2 {
   .pic img {
     padding: 10px;
   }
-  
 }
 @media screen and (max-width: 800px) {
   h2 {
