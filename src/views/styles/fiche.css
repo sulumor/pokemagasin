@@ -314,6 +314,7 @@ h2 {
     font-size: 20px;
     margin: 10px;
   }
+  .achat .panier span,
   .achat .sold_out span {
     font-size: 20px;
   }
@@ -369,9 +370,11 @@ h2 {
   .pic img {
     height: 50%;
   }
+  .achat .panier,
   .achat .sold_out {
     padding: 10px;
   }
+  .achat .panier span
   .achat .sold_out span {
     font-size: 15px;
   }

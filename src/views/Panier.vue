@@ -88,7 +88,6 @@
             </button>
           </div>
         </div>
-        <tableau></tableau>
       </div>
     </div>
   </div>
@@ -97,11 +96,10 @@
 <script>
 import { mapState } from "vuex";
 import Retour from "../components/Retour.vue";
-import Tableau from '../components/Tableau.vue';
 
 export default {
   name: "Panier",
-  components: { Retour, Tableau},
+  components: { Retour },
   methods: {
     plusQuantity: function (pokemonPanier) {
       if (this.pokemons[pokemonPanier.id - 1].stock > 0) {
