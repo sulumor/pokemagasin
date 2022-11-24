@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" href="top">
     <choice v-on:filtrePoke="changementListe($event)"></choice>
     <selection v-on:selectPoke="changementListe($event)"></selection>
     <searchbar
@@ -7,30 +7,11 @@
       v-on:searchPoke="recherchePoke($event)"
     ></searchbar>
     <div class="card-container">
-      <div
-        v-bind:key="id"
-        v-for="(pokemon, id) in filtre"
-        v-bind:style="{ background: cardColor(pokemon) }"
-        class="card"
-      >
-        <router-link v-bind:to="`/${pokemon.id}/${pokemon.name}`">
-          <p class="id" :id="pokemon.id"># {{ pokemon.id }}</p>
-          <p v-show="pokemon.stock === 1" class="stock">Dernier dispo</p>
-          <img v-bind:src="pokemon.pic1" :alt="pokemon.name" class="picPoke" />
-          <div class="namePrice">
-            <span class="name">{{ pokemon.name }}</span>
-            <span class="price">{{ pokemon.price }} €</span>
-          </div>
-        </router-link>
-        <p v-show="pokemon.stock === 0" class="sold-out">Rupture de stock</p>
-        <div v-show="pokemon.stock > 0" class="addCart">
-          <button v-on:click="addToCart(pokemon)" type="button">
-            <img src="../assets/add-to-basket.png" />
-            <p>Ajouter au panier</p>
-          </button>
-        </div>
+      <div v-bind:key="id" v-for="(pokemon, id) in filtre">
+        <smallCard v-bind:pokemon="pokemon" />
       </div>
     </div>
+    <topButton />
   </div>
 </template>
 
@@ -40,6 +21,8 @@ import store from "../store/index";
 import Choice from "../components/Choice";
 import Selection from "../components/Selection";
 import Searchbar from "../components/Searchbar";
+import SmallCard from "../components/Pokemon/SmallCard.vue";
+import Top from "../components/Button/Top.vue";
 
 export default {
   name: "All",
@@ -48,6 +31,8 @@ export default {
     choice: Choice,
     searchbar: Searchbar,
     selection: Selection,
+    smallCard: SmallCard,
+    topButton: Top,
   },
   data() {
     return {
@@ -56,9 +41,6 @@ export default {
     };
   },
   methods: {
-    addToCart(pokemon) {
-      this.$store.dispatch("addToCart", pokemon.id);
-    },
     fetchPokemonComplet(pokemon) {
       if (this.$store.state.pokemons.length < 151) {
         const objPokemon = {};
@@ -84,10 +66,12 @@ export default {
         axios
           .get(pokemon.url)
           .then((pokeData) => {
-            objPokemon.pic1 =
-              pokeData.data.sprites.other["official-artwork"].front_default;
-            objPokemon.pic2 =
-              pokeData.data.sprites.other.dream_world.front_default;
+            objPokemon.pic = [
+              pokeData.data.sprites.other["official-artwork"].front_default,
+              pokeData.data.sprites.other.dream_world.front_default,
+              pokeData.data.sprites.other.home.front_default,
+              pokeData.data.sprites.front_default,
+            ];
             objPokemon.type = pokeData.data.types[0].type.name;
             objPokemon.id = pokeData.data.id;
             objPokemon.life = pokeData.data.stats[0].base_stat;
@@ -139,10 +123,6 @@ export default {
           });
       }
     },
-    cardColor(pokemon) {
-      let color = this.$store.state.types[pokemon.type];
-      return color;
-    },
     changementListe(nvFiltre) {
       this.filtreType = nvFiltre;
     },
@@ -172,4 +152,20 @@ export default {
   },
 };
 </script>
-<style scoped src="./styles/home.css"></style>
+<style>
+.card-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 90%;
+  padding-top: 15px;
+}
+
+@media screen and (max-width: 550px) {
+  .card-container {
+    padding: 0;
+  }
+}
+</style>

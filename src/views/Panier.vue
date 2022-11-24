@@ -19,7 +19,7 @@
             v-bind:style="{ background: cardColor(pokemonPanier) }"
             class="panier"
           >
-          <span class="price">{{pokemonPanier.price}} €</span>
+            <span class="price">{{ pokemonPanier.price }} €</span>
             <img
               :src="pokemonPanier.pic"
               :alt="pokemonPanier.name"
@@ -95,20 +95,20 @@
 
 <script>
 import { mapState } from "vuex";
-import Retour from "../components/Retour.vue";
+import Retour from "../components/Button/Retour.vue";
 
 export default {
   name: "Panier",
   components: { Retour },
   methods: {
-    plusQuantity: function (pokemonPanier) {
+    plusQuantity: function(pokemonPanier) {
       if (this.pokemons[pokemonPanier.id - 1].stock > 0) {
         pokemonPanier.quantity++;
         pokemonPanier.stock--;
         this.pokemons[pokemonPanier.id - 1].stock--;
       }
     },
-    minusQuantity: function (pokemonPanier, id) {
+    minusQuantity: function(pokemonPanier, id) {
       if (pokemonPanier.quantity === 1) {
         this.$delete(this.cart, id);
         pokemonPanier.stock++;
@@ -119,13 +119,13 @@ export default {
         this.pokemons[pokemonPanier.id - 1].stock++;
       }
     },
-    removeCart: function (pokemonPanier, id) {
+    removeCart: function(pokemonPanier, id) {
       this.$delete(this.cart, id);
       pokemonPanier.stock = pokemonPanier.stock + pokemonPanier.quantity;
       this.pokemons[pokemonPanier.id - 1].stock =
         this.pokemons[pokemonPanier.id - 1].stock + pokemonPanier.quantity;
     },
-    cardColor: function (pokemonPanier) {
+    cardColor: function(pokemonPanier) {
       let color = this.types[pokemonPanier.type];
       return color;
     },
@@ -162,5 +162,4 @@ export default {
 };
 </script>
 
-<style scoped src="./styles/panier.css">
-</style>
+<style scoped src="./styles/panier.css"></style>

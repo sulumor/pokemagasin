@@ -1,15 +1,20 @@
 <template>
-    <button class="back"><router-link to='/'><img src="../assets/back-arrow.png"> Continuer mes achats</router-link></button>
+  <button class="back">
+    <router-link to="/"
+      ><img src="../../assets/back-arrow.png" /> Continuer mes
+      achats</router-link
+    >
+  </button>
 </template>
 
 <script>
 export default {
-    name: 'Retour'
-}
+  name: "Retour",
+};
 </script>
 
-<style scope>
-.back{
+<style>
+.back {
   position: absolute;
   top: 90px;
   left: 2vw;
@@ -28,16 +33,16 @@ export default {
   font-size: 20px;
   font-weight: 500;
 }
-.back img{
+.back img {
   width: 20px;
   height: 20px;
 }
-@media screen and (max-width:800px){
-  .back{
+@media screen and (max-width: 800px) {
+  .back {
     top: 70px;
     font-size: 15px;
   }
-  .back img{
+  .back img {
     width: 15px;
     height: 15px;
   }

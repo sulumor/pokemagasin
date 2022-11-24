@@ -2,23 +2,25 @@
   <div id="app">
     <loading v-show="this.$store.state.pokemons.length !== 151"></loading>
     <nav-top v-show="this.$store.state.pokemons.length == 151"></nav-top>
-    <router-view v-show="this.$store.state.pokemons.length == 151"></router-view>
+    <router-view
+      v-show="this.$store.state.pokemons.length == 151"
+    ></router-view>
   </div>
 </template>
 
 <script>
-import store from './store/index.js'
-import Nav from './components/Nav'
-import Loading from './components/Loading'
+import store from "./store/index.js";
+import Nav from "./components/Nav";
+import Loading from "./components/Loading";
 
 export default {
-  name: 'App',
-  store:store,
+  name: "App",
+  store: store,
   components: {
-    'nav-top': Nav,
-    loading : Loading
-  }
-}
+    "nav-top": Nav,
+    loading: Loading,
+  },
+};
 </script>
 
 <style>
@@ -210,7 +212,7 @@ body {
       rgba(86, 86, 86, 0.02) 87.5%,
       rgba(86, 86, 86, 0.02) 100%
     ),
-	linear-gradient(90deg, hsl(194, 0%, 10%), hsl(194, 0%, 10%));
+    linear-gradient(90deg, hsl(194, 0%, 10%), hsl(194, 0%, 10%));
 }
 ol,
 ul {

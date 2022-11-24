@@ -1,12 +1,37 @@
-.card-container {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  width: 90%;
-  padding-top: 15px;
-}
+<template>
+  <div v-bind:style="{ background: cardColor(pokemon) }" class="card">
+    <router-link v-bind:to="`/${pokemon.id}/${pokemon.name}`">
+      <p class="id" :id="pokemon.id"># {{ pokemon.id }}</p>
+      <p v-show="pokemon.stock === 1" class="stock">Dernier dispo</p>
+      <img v-bind:src="pokemon.pic[0]" :alt="pokemon.name" class="picPoke" />
+      <div class="namePrice">
+        <span class="name">{{ pokemon.name }}</span>
+        <span class="price">{{ pokemon.price }} €</span>
+      </div>
+    </router-link>
+    <addCart v-bind:pokemon="pokemon" />
+  </div>
+</template>
+
+<script>
+import AddCart from "../Button/AddCart.vue";
+
+export default {
+  name: "SmallCard",
+  props: ["pokemon"],
+  components: {
+    addCart: AddCart,
+  },
+  methods: {
+    cardColor(pokemon) {
+      let color = this.$store.state.types[pokemon.type];
+      return color;
+    },
+  },
+};
+</script>
+
+<style>
 .card {
   box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.7);
   width: 150px;
@@ -36,19 +61,7 @@
 .card:hover .picPoke {
   transform: scale(1.2);
 }
-.sold-out {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 100%;
-  font-size: 25px;
-  color: crimson;
-  transform: translateX(-50%);
-  line-height: 30px;
-  font-weight: 800;
-  text-align: center;
-  z-index: 2;
-}
+
 .stock {
   position: absolute;
   bottom: 35px;
@@ -68,33 +81,6 @@
   font-size: 25px;
   font-weight: 800;
 }
-.card:hover .addCart button {
-  opacity: 1;
-}
-.addCart {
-  width: 100%;
-  height: 35px;
-}
-.addCart button {
-  opacity: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  outline: none;
-  border: none;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background: linear-gradient(to top, #f1f1f1, transparent);
-  height: 100%;
-  width: 100%;
-  transition: opacity 0.5s ease;
-  cursor: pointer;
-}
-.addCart button img {
-  height: 20px;
-  width: 20px;
-  margin-right: 5px;
-}
 
 @media screen and (max-width: 800px) {
   .card {
@@ -112,18 +98,8 @@
     font-size: 12px;
     margin-bottom: 3px;
   }
-  .sold-out {
-    font-size: 20px;
-    line-height: 25px;
-  }
-  .addCart button {
-    opacity: 1;
-  }
 }
 @media screen and (max-width: 550px) {
-  .card-container {
-    padding: 0;
-  }
   .card {
     width: 75px;
     height: 150px;
@@ -143,18 +119,5 @@
     text-align: center;
     margin-bottom: 3px;
   }
-  .sold-out {
-    font-size: 13px;
-    line-height: 15px;
-  }
-  .addCart {
-    height: 25px;
-  }
-  .addCart button p {
-    display: none;
-  }
-  .addCart button img {
-    width: 20px;
-    height: 20px;
-  }
 }
+</style>

@@ -18,7 +18,7 @@ export default {
     };
   },
   methods: {
-    searchPoke: function (searchInp) {
+    searchPoke: function(searchInp) {
       this.$emit("searchPoke", searchInp);
       const inp = document.querySelector(".searchbar");
       if (this.searchInp !== "") {
@@ -31,7 +31,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .searchbar {
   width: 100%;
   position: relative;

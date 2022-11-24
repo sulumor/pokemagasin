@@ -45,7 +45,7 @@ export default {
 };
 </script>
 
-<style scope>
+<style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 .selectType {
@@ -61,18 +61,18 @@ export default {
   width: 40%;
   border: 1px solid #3b5ba7;
   font-weight: 600;
-  
+
   outline: none;
 }
-.goTo{
+.goTo {
   text-align: center;
 }
-.goTo h6{
+.goTo h6 {
   color: #ffcb05;
 }
-.goTo a{
+.goTo a {
   color: #3b5ba7;
-  margin-right: 5px ;
+  margin-right: 5px;
 }
 @media screen and (max-width: 550px) {
   .selectType {
