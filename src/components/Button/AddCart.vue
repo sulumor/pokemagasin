@@ -13,6 +13,7 @@
 <script>
 import store from "../../store";
 
+//revoir tous le bouton pour l'intégrer à plusieur endroit
 export default {
   name: "AddCart",
   store: store,
@@ -48,7 +49,7 @@ export default {
   height: 100%;
 }
 .but button {
-  opacity: 0;
+  opacity: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,9 +68,9 @@ export default {
   width: 20px;
   margin-right: 5px;
 }
-.card:hover .but button {
+/* .card:hover .but button {
   opacity: 1;
-}
+}*/
 
 @media screen and (max-width: 800px) {
   .sold-out {

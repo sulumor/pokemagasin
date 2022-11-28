@@ -8,38 +8,12 @@
     <p class="titre"># {{ this.id }} {{ pokemon.name }}</p>
     <div class="infos">
       <simplePic v-bind:pokemon="pokemon" index="1" />
-      <div class="dimension">
-        <p>
-          Taille :
-          {{ pokemon.height / 10 }} m
-        </p>
-        <p>
-          Poids :
-          {{ pokemon.weight / 10 }} kg
-        </p>
-        <p>Vie : {{ pokemon.life }}</p>
-        <p>Attaque : {{ pokemon.attack }}</p>
-        <p>Defense : {{ pokemon.defense }}</p>
-        <p>Vitesse : {{ pokemon.speed }}</p>
-        <div class="achat">
-          <button
-            v-show="pokemon.stock > 0"
-            v-on:click="addToCart()"
-            type="button"
-            class="panier"
-          >
-            <img src="../../assets/add-to-basket.png" />
-            <span>Ajouter au panier</span>
-          </button>
-          <button v-show="pokemon.stock == 0" type="button" class="sold_out">
-            <span>Rupture de stock</span>
-          </button>
-        </div>
-      </div>
-      <span class="price">{{ pokemon.price }} €</span>
+      <featuresCard v-bind:pokemon="pokemon" />
+      <addCartBtn v-bind:pokemon="pokemon" />
+      <priceTag v-bind:prix="pokemon.price" />
     </div>
-    <right v-bind:id="this.id" v-on:pokeSuivant="changementId($event)" />
-    <left v-bind:id="this.id" v-on:pokePrecedent="changementId($event)" />
+    <rightbtn v-bind:id="this.id" v-on:pokeSuivant="changementId($event)" />
+    <leftbtn v-bind:id="this.id" v-on:pokePrecedent="changementId($event)" />
   </div>
 </template>
 
@@ -49,10 +23,20 @@ import store from "../../store";
 import Right from "../../components/Button/Right.vue";
 import Left from "../../components/Button/Left.vue";
 import Simple from "../Picture/Simple.vue";
+import Features from "../Card/Features.vue";
+import AddCart from "../../components/Button/AddCart.vue";
+import Price from "../Tag/Price.vue";
 
 export default {
   name: "fullCard",
-  components: { Left, Right, simplePic: Simple },
+  components: {
+    leftbtn: Left,
+    rightbtn: Right,
+    simplePic: Simple,
+    featuresCard: Features,
+    addCartBtn: AddCart,
+    priceTag: Price,
+  },
   store: store,
   data() {
     return {
@@ -64,9 +48,6 @@ export default {
     cardColor(poke) {
       let color = this.types[poke.type];
       return color;
-    },
-    addToCart() {
-      this.$store.dispatch("addToCart", this.id);
     },
     changementId(nvId) {
       this.id = nvId;
@@ -125,44 +106,6 @@ export default {
   font-weight: 600;
 }
 
-.dimension {
-  padding: 4em 3em;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  width: 55%;
-}
-
-.dimension p {
-  font-size: 55px;
-  margin: 30px;
-}
-
-.achat {
-  width: 100%;
-  height: 70px;
-  margin-right: 10px;
-}
-.achat button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  outline: none;
-  border: 1px solid #000;
-  border-radius: 15px;
-  padding: 30px 60px;
-  margin: 0 auto;
-  transition: all 0.5s ease;
-  cursor: pointer;
-  font-size: 4vh;
-  font-weight: 500;
-}
-.achat button img {
-  width: 100px;
-  margin-right: 20px;
-  padding: 20px;
-}
 .achat .panier,
 .achat .sold_out {
   width: 100%;
@@ -202,10 +145,7 @@ export default {
     padding: 20px 50px;
     font-size: 55px;
   }
-  .dimension p {
-    font-size: 50px;
-    margin: 20px;
-  }
+
   .pic p {
     padding-top: 0;
   }
@@ -215,10 +155,7 @@ export default {
   .titre {
     font-size: 70px;
   }
-  .price {
-    font-size: 55px;
-    padding: 20px;
-  }
+
   .achat {
     height: 30px;
   }
@@ -230,10 +167,7 @@ export default {
     width: 50px;
     padding: 0;
   }
-  .dimension p {
-    font-size: 30px;
-    margin: 10px;
-  }
+
   .pic p {
     padding-top: 0;
     font-size: 2.3vh;
@@ -247,11 +181,7 @@ export default {
   .titre {
     font-size: 50px;
   }
-  .price {
-    top: -80px;
-    font-size: 40px;
-    padding: 20px;
-  }
+
   .achat {
     height: 25px;
   }
@@ -263,13 +193,7 @@ export default {
     width: 30px;
     padding: 0;
   }
-  .dimension {
-    padding: 20px;
-  }
-  .dimension p {
-    font-size: 25px;
-    margin: 10px;
-  }
+
   .pic img {
     padding: 10px;
   }
@@ -278,18 +202,7 @@ export default {
   .titre {
     font-size: 40px;
   }
-  .price {
-    top: -70px;
-    font-size: 30px;
-    padding: 10px;
-  }
-  .dimension {
-    padding: 0px;
-  }
-  .dimension p {
-    font-size: 20px;
-    margin: 10px;
-  }
+
   .achat .panier span,
   .achat .sold_out span {
     font-size: 20px;
@@ -299,14 +212,7 @@ export default {
   .titre {
     font-size: 30px;
   }
-  .price {
-    top: -50px;
-    font-size: 20px;
-    padding: 5px;
-  }
-  .dimension p {
-    font-size: 15px;
-  }
+
   .pic {
     padding: 5px;
   }
@@ -315,13 +221,7 @@ export default {
   .titre {
     font-size: 20px;
   }
-  .price {
-    font-size: 12px;
-    padding: 5px;
-  }
-  .dimension p {
-    margin: 0 5px 0 0;
-  }
+
   .achat button {
     font-size: 0px;
     padding: 20px;
