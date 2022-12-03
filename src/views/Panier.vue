@@ -19,7 +19,7 @@
             v-bind:style="{ background: cardColor(pokemonPanier) }"
             class="panier"
           >
-            <span class="price">{{ pokemonPanier.price }} €</span>
+            <span class="prix">{{ pokemonPanier.price }} €</span>
             <img
               :src="pokemonPanier.pic"
               :alt="pokemonPanier.name"

@@ -12,6 +12,7 @@
     <p>Attaque : {{ pokemon.attack }}</p>
     <p>Defense : {{ pokemon.defense }}</p>
     <p>Vitesse : {{ pokemon.speed }}</p>
+    <p class="description">{{ pokemon.description }}</p>
   </div>
 </template>
 <script>
@@ -23,59 +24,17 @@ export default {
 
 <style>
 .dimension {
-  padding: 4em 3em;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  width: 55%;
+  display: grid;
+  grid-template: repeat(5, 1fr) / repeat(3, auto);
+  padding-top: 20px;
 }
-
 .dimension p {
-  font-size: 55px;
-  margin: 30px;
+  color: hsl(219, 9%, 45%);
+  padding: 5px;
 }
-
-@media screen and (max-width: 1900px) {
-  .dimension p {
-    font-size: 50px;
-    margin: 20px;
-  }
-}
-
-@media screen and (max-width: 1500px) {
-  .dimension p {
-    font-size: 30px;
-    margin: 10px;
-  }
-}
-
-@media screen and (max-width: 1050px) {
-  .dimension {
-    padding: 20px;
-  }
-  .dimension p {
-    font-size: 25px;
-    margin: 10px;
-  }
-}
-@media screen and (max-width: 800px) {
-  .dimension {
-    padding: 0px;
-  }
-  .dimension p {
-    font-size: 20px;
-    margin: 10px;
-  }
-}
-@media screen and (max-width: 650px) {
-  .dimension p {
-    font-size: 15px;
-  }
-}
-@media screen and (max-width: 550px) {
-  .dimension p {
-    margin: 0 5px 0 0;
-  }
+.description {
+  grid-row: 4/6;
+  grid-column: 1/4;
+  padding-top: 5px;
 }
 </style>

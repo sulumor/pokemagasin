@@ -1,25 +1,27 @@
 <template>
-  <div class="sheet-container">
-    <retour></retour>
-    <h2>Fiche Pokémons</h2>
-    <fullCard
-      v-on:changementId="newId($event)"
-      v-bind:pokemon="pokemons[this.id - 1]"
-    />
+  <div>
+    <div class="sheet-container">
+      <fullCard
+        v-on:changementId="newId($event)"
+        v-bind:pokemon="pokemons[this.id - 1]"
+      />
+    </div>
+    <div class="button-container">
+      <leftbtn v-bind:id="this.id" v-on:pokePrecedent="changementId($event)" />
+      <rightbtn v-bind:id="this.id" v-on:pokeSuivant="changementId($event)" />
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
 import store from "../store/index";
-import Retour from "../components/Button/Retour.vue";
 import FullCard from "../components/Pokemon/FullCard.vue";
-
-//voir pour faire du trie
-//voir sur comment mieux diffuser les infos dans les enfants
+import Right from "../components/Button/Right.vue";
+import Left from "../components/Button/Left.vue";
 
 export default {
-  components: { Retour, FullCard },
+  components: { FullCard, leftbtn: Left, rightbtn: Right },
   store: store,
   name: "Fiche",
   data() {
@@ -28,6 +30,10 @@ export default {
     };
   },
   methods: {
+    changementId(nvId) {
+      this.id = nvId;
+      this.$emit("changementId", this.id);
+    },
     newId(i) {
       this.id = i;
     },
@@ -38,4 +44,16 @@ export default {
 };
 </script>
 
-<style scoped src="./styles/fiche.css"></style>
+<style>
+.sheet-container {
+  padding-top: 80px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 5vh;
+}
+</style>

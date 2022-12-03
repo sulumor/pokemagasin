@@ -1,8 +1,8 @@
 <template>
   <div class="addCart">
     <p v-show="pokemon.stock === 0" class="sold-out">Rupture de stock</p>
-    <div v-show="pokemon.stock > 0" class="but">
-      <button v-on:click="addToCart(pokemon)" type="button">
+    <div v-show="pokemon.stock > 0">
+      <button v-on:click="addToCart(pokemon)" class="but" type="button">
         <img src="../../assets/add-to-basket.png" />
         <p>Ajouter au panier</p>
       </button>
@@ -13,7 +13,6 @@
 <script>
 import store from "../../store";
 
-//revoir tous le bouton pour l'intégrer à plusieur endroit
 export default {
   name: "AddCart",
   store: store,
@@ -28,73 +27,27 @@ export default {
 
 <style>
 .sold-out {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
   width: 100%;
   font-size: 25px;
   color: crimson;
-  transform: translateX(-50%);
   line-height: 30px;
-  font-weight: 800;
+  font-weight: bold;
   text-align: center;
   z-index: 2;
 }
-.addCart {
-  width: 100%;
-  height: 35px;
-}
-
 .but {
-  height: 100%;
-}
-.but button {
-  opacity: 1;
   display: flex;
-  justify-content: center;
   align-items: center;
-  outline: none;
-  border: none;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background: linear-gradient(to top, #f1f1f1, transparent);
+  justify-content: space-evenly;
+  width: 280px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px rgba(47, 46, 46, 0.45);
+  background-color: #ffcb05;
+  box-shadow: 0px 10px 20px 15px #ffcd0542;
+}
+.but img {
   height: 100%;
-  width: 100%;
-  transition: opacity 0.5s ease;
-  cursor: pointer;
-}
-.but button img {
-  height: 20px;
-  width: 20px;
-  margin-right: 5px;
-}
-/* .card:hover .but button {
-  opacity: 1;
-}*/
-
-@media screen and (max-width: 800px) {
-  .sold-out {
-    font-size: 20px;
-    line-height: 25px;
-  }
-  .but button {
-    opacity: 1;
-  }
-}
-@media screen and (max-width: 550px) {
-  .sold-out {
-    font-size: 13px;
-    line-height: 15px;
-  }
-  .addCart {
-    height: 25px;
-  }
-  .but button p {
-    display: none;
-  }
-  .but button img {
-    width: 20px;
-    height: 20px;
-  }
+  padding: 4px;
 }
 </style>

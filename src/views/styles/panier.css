@@ -43,13 +43,13 @@
   border: 2px solid #333;
   box-shadow: 3px 3px 10px 5px rgba(255, 255, 255, 0.2);
 }
-.panier .price {
+.panier .prix {
   position: absolute;
   top: 10px;
   left: -5px;
   transform: rotate(-45deg);
   padding: 2px 10px;
-  background: rgba(0, 0, 0,  0.2);
+  background: rgba(0, 0, 0, 0.2);
   color: #ffcb05;
   border-radius: 999999px;
 }
@@ -213,7 +213,7 @@
   .panier p,
   .panier span,
   .desktop,
-  .desktop span{
+  .desktop span {
     font-size: 18px;
   }
   .englobant {
@@ -233,7 +233,7 @@
   .panier p,
   .panier span,
   .desktop,
-  .mobile p{
+  .mobile p {
     font-size: 12px;
   }
 }

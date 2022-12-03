@@ -81,7 +81,7 @@ export default {
             objPokemon.height = pokeData.data.height;
             objPokemon.weight = pokeData.data.weight;
             objPokemon.stock = Math.trunc(Math.random() * 5);
-            objPokemon.price = Math.trunc(
+            objPokemon.price = Math.round(
               ((objPokemon.life +
                 objPokemon.attack +
                 objPokemon.defense +

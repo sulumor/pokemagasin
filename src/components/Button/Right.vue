@@ -39,12 +39,8 @@ export default {
 
 <style>
 .right {
-  position: absolute;
-  top: 50%;
-  right: -4vw;
-  transform: translate(50%, -50%);
-  width: 7vw;
-  height: 7vw;
+  width: 45%;
+  height: 100%;
 }
 .right button {
   width: 100%;
@@ -53,24 +49,18 @@ export default {
   border: none;
   background: transparent;
 }
-.right img {
-  width: 7vw;
-  height: 7vw;
+.right a {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
 }
 .right p {
   font-size: 16px;
   color: #ffcb05;
 }
-.right button:hover {
-  animation: 0.5s linear infinite alternate avance;
-  -webkit-animation: 0.5s linear infinite alternate avance;
-}
-@keyframes avance {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(40%);
-  }
+
+.right img {
+  height: 100%;
 }
 </style>

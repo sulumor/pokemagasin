@@ -3,7 +3,7 @@
     <router-link v-bind:to="`/${pokemon.id}/${pokemon.name}`">
       <p class="id" :id="pokemon.id"># {{ pokemon.id }}</p>
       <p v-show="pokemon.stock === 1" class="stock">Dernier dispo</p>
-      <img v-bind:src="pokemon.pic[0]" :alt="pokemon.name" class="picPoke" />
+      <simplePic v-bind:picture="pokemon.pic[0]" :name="pokemon.name" />
       <div class="namePrice">
         <span class="name">{{ pokemon.name }}</span>
         <span class="price">{{ pokemon.price }} €</span>
@@ -15,12 +15,14 @@
 
 <script>
 import AddCart from "../Button/AddCart.vue";
+import Simple from "../Picture/Simple.vue";
 
 export default {
   name: "SmallCard",
   props: ["pokemon"],
   components: {
     addCart: AddCart,
+    simplePic: Simple,
   },
   methods: {
     cardColor(pokemon) {
@@ -55,9 +57,7 @@ export default {
 .card .id {
   padding: 10px 10px 0;
 }
-.card .picPoke {
-  width: 100px;
-}
+
 .card:hover .picPoke {
   transform: scale(1.2);
 }
