@@ -1,7 +1,6 @@
 <template>
-  <div class="pic">
-    <img v-bind:src="pokemon.pic[index]" :alt="pokemon.name" class="firstImg" />
-    <img v-bind:src="pokemon.pic[0]" :alt="pokemon.name" class="secImg" />
+  <div class="picture">
+    <img v-bind:src="pokemon.pic[index]" :alt="pokemon.name" />
   </div>
 </template>
 <script>
@@ -11,30 +10,15 @@ export default {
 };
 </script>
 <style>
-.pic {
-  padding-top: 10vh;
+.picture {
   position: relative;
-  height: 100%;
-  width: 100%;
+  width: 6.25rem;
+  height: 6.25rem;
 }
-.pic img {
+.picture img {
   position: absolute;
   top: 0;
   left: 0;
-  height: 90%;
-  width: 90%;
-}
-.firstImg {
-  opacity: 1;
-}
-.secImg {
-  opacity: 0;
-}
-
-.pic:hover > .firstImg {
-  opacity: 0;
-}
-.pic:hover > .secImg {
-  opacity: 1;
+  width: 100%;
 }
 </style>

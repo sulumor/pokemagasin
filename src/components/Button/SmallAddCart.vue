@@ -1,8 +1,8 @@
 <template>
-  <div class="addCart">
+  <div class="smallAddCart">
     <p v-show="pokemon.stock === 0" class="sold-out">Rupture de stock</p>
     <div v-show="pokemon.stock > 0">
-      <button v-on:click="addToCart(pokemon)" class="but" type="button">
+      <button v-on:click="addToCart(pokemon)" class="smallBut" type="button">
         <img src="../../assets/add-to-basket.png" />
         <p>Ajouter au panier</p>
       </button>
@@ -14,7 +14,7 @@
 import store from "../../store";
 
 export default {
-  name: "AddCart",
+  name: "SmallAddCart",
   store: store,
   props: ["pokemon"],
   methods: {
@@ -26,28 +26,36 @@ export default {
 </script>
 
 <style>
+.smallAddCart {
+  width: 100%;
+}
 .sold-out {
   width: 100%;
-  font-size: 25px;
-  color: crimson;
-  line-height: 30px;
+  font-size: 1.25rem;
+  color: #585353ba;
+  line-height: 1.2rem;
   font-weight: bold;
   text-align: center;
   z-index: 2;
 }
-.but {
+.smallBut {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  width: 280px;
-  height: 50px;
+  justify-content: space-around;
+  width: 90%;
+  height: 25px;
   border-radius: 10px;
   border: 1px rgba(47, 46, 46, 0.45);
   background-color: #ffcb05;
-  box-shadow: 0px 10px 20px 10px #ffcd0542;
+  box-shadow: 2px 2px 2px #585353ba;
+  margin: 4px auto;
 }
-.but img {
+.smallBut img {
   height: 100%;
-  padding: 4px;
+  padding: 2px;
+}
+
+.smallBut p {
+  font-size: 0.7rem;
 }
 </style>

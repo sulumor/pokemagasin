@@ -1,7 +1,7 @@
 <template>
   <div class="sheet">
     <div class="leftPart">
-      <simplePic v-bind:pokemon="pokemon" index="1" />
+      <hoverPic v-bind:pokemon="pokemon" index="1" />
     </div>
     <div class="rightPart">
       <p
@@ -10,7 +10,7 @@
           color: cardColor(pokemon),
         }"
       >
-        # {{ this.id }} {{ pokemon.name }}
+        # {{ pokemon.id }} {{ pokemon.name }}
       </p>
       <featuresCard v-bind:pokemon="pokemon" />
       <priceTag v-bind:prix="pokemon.price" />
@@ -23,7 +23,7 @@
 import { mapState } from "vuex";
 import store from "../../store";
 
-import Simple from "../Picture/Simple.vue";
+import Hover from "../Picture/WithHover.vue";
 import Features from "../Card/Features.vue";
 import AddCart from "../../components/Button/AddCart.vue";
 import Price from "../Tag/Price.vue";
@@ -31,7 +31,7 @@ import Price from "../Tag/Price.vue";
 export default {
   name: "fullCard",
   components: {
-    simplePic: Simple,
+    hoverPic: Hover,
     featuresCard: Features,
     addCartBtn: AddCart,
     priceTag: Price,

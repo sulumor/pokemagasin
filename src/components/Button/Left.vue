@@ -5,11 +5,11 @@
         v-if="this.id > 1"
         :to="`/${pokemons[this.id - 2].id}/${pokemons[this.id - 2].name}`"
       >
-        <p>{{ pokemons[this.id - 2].name }}</p>
+        <p># {{ pokemons[this.id - 2].id }} {{ pokemons[this.id - 2].name }}</p>
         <img src="../../assets/next.png" alt="" />
       </router-link>
       <router-link v-else :to="`/${pokemons[150].id}/${pokemons[150].name}`">
-        <p>{{ pokemons[150].name }}</p>
+        <p># 151 {{ pokemons[150].name }}</p>
         <img src="../../assets/next.png" alt="" />
       </router-link>
     </button>

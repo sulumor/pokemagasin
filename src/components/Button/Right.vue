@@ -6,11 +6,13 @@
         :to="`/${pokemons[this.id].id}/${pokemons[this.id].name}`"
       >
         <img src="../../assets/next.png" alt="" />
-        <p>{{ pokemons[this.id].name }}</p></router-link
+        <p>
+          # {{ pokemons[this.id].id }} {{ pokemons[this.id].name }}
+        </p></router-link
       >
       <router-link v-else :to="`/${pokemons[0].id}/${pokemons[0].name}`"
         ><img src="../../assets/next.png" alt="" />
-        <p>{{ pokemons[0].name }}</p>
+        <p># 1 {{ pokemons[0].name }}</p>
       </router-link>
     </button>
   </div>
