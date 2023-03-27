@@ -1,6 +1,6 @@
 <template>
   <div class="addCart">
-    <p v-show="pokemon.stock === 0" class="sold-out">Rupture de stock</p>
+    <p v-show="pokemon.stock === 0" class="soldOut">Rupture de stock</p>
     <div v-show="pokemon.stock > 0">
       <button v-on:click="addToCart(pokemon)" class="but" type="button">
         <img src="../../assets/add-to-basket.png" />
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style>
-.sold-out {
+.soldOut {
   width: 100%;
   font-size: 25px;
   color: crimson;

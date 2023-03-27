@@ -1,6 +1,6 @@
 <template>
   <div class="selectType">
-    <select v-on:change="selectPoke(selectType)" v-model="selectType">
+    <select v-on:change="selectPoke(selection)" v-model="selection">
       <option value="">Selectionner un type</option>
       <option value="water">Eau</option>
       <option value="normal">Normal</option>
@@ -18,14 +18,6 @@
       <option value="fairy">Fee</option>
       <option value="ice">Glace</option>
     </select>
-    <div class="goTo">
-      <h6>Allez au Pokemon n°</h6>
-      <a href="#26">#30</a>
-      <a href="#56">#60</a>
-      <a href="#86">#90</a>
-      <a href="#116">#120</a>
-      <a href="#146">#150</a>
-    </div>
   </div>
 </template>
 
@@ -34,7 +26,7 @@ export default {
   name: "Selection",
   data() {
     return {
-      selectType: "",
+      selection: "",
     };
   },
   methods: {
@@ -46,40 +38,24 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+/*@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");*/
 
 .selectType {
-  display: none;
-  padding-top: 70px;
-  width: 100%;
+  display: flex;
+  width: 40vw;
   font-family: "Roboto", sans-serif;
   font-size: 15px;
 }
 .selectType select {
-  padding: 5px 10px;
+  padding: 12px 10px;
   margin: 0 20px;
-  width: 40%;
-  border: 1px solid #3b5ba7;
+  width: 100%;
+  border-radius: 9999999999px;
+  border: 2px solid #3b5ba7;
   font-weight: 600;
-
   outline: none;
 }
-.goTo {
-  text-align: center;
-}
-.goTo h6 {
-  color: #ffcb05;
-}
-.goTo a {
-  color: #3b5ba7;
-  margin-right: 5px;
-}
-@media screen and (max-width: 550px) {
-  .selectType {
-    display: block;
-    display: flex;
-  }
-}
+
 @media screen and (max-width: 450px) {
   .selectType select {
     width: 45%;

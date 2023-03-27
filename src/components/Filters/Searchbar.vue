@@ -33,7 +33,7 @@ export default {
 
 <style>
 .searchbar {
-  width: 100%;
+  width: 40vw;
   position: relative;
   padding: 15px;
 }
@@ -42,15 +42,13 @@ export default {
   top: 50%;
   transform: translateY(-50%);
   padding-left: 35px;
-  font-family: "Chakra Petch", sans-serif;
   pointer-events: none;
   transition: all 0.8s ease-in-out;
 }
 
 .searchbar input {
-  width: 40%;
+  width: 100%;
   padding: 10px 20px;
-  font-size: 20px;
   letter-spacing: 1.5px;
   outline: none;
   border-radius: 9999999999px;
@@ -59,9 +57,7 @@ export default {
 }
 .searchbar:focus-within label,
 .searchbar.active label {
-  transform: translate(40vw, -50%);
-  color: #ffcb05;
-  font-size: 30px;
+  display: none;
 }
 @media screen and (max-width: 800px) {
   .searchbar label {
@@ -69,10 +65,6 @@ export default {
   }
   .searchbar input {
     width: 60%;
-  }
-  .searchbar:focus-within label,
-  .searchbar.active label {
-    display: none;
   }
 }
 @media screen and (max-width: 550px) {

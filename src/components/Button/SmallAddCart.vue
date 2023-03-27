@@ -31,9 +31,8 @@ export default {
 }
 .sold-out {
   width: 100%;
-  font-size: 1.25rem;
-  color: #585353ba;
-  line-height: 1.2rem;
+  font-size: 1.2rem;
+  color: crimson;
   font-weight: bold;
   text-align: center;
   z-index: 2;

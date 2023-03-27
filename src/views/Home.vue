@@ -1,11 +1,6 @@
 <template>
-  <div class="home" href="top">
-    <choice v-on:filtrePoke="changementListe($event)"></choice>
-    <selection v-on:selectPoke="changementListe($event)"></selection>
-    <searchbar
-      v-show="this.filtreType == ''"
-      v-on:searchPoke="recherchePoke($event)"
-    ></searchbar>
+  <div href="top">
+    <filt v-on:selectType="choixType($event)" />
     <div class="card-container">
       <div v-bind:key="id" v-for="(pokemon, id) in filtre">
         <smallCard v-bind:pokemon="pokemon" />
@@ -18,9 +13,7 @@
 <script>
 import axios from "axios";
 import store from "../store/index";
-import Choice from "../components/Choice";
-import Selection from "../components/Selection";
-import Searchbar from "../components/Searchbar";
+import Filter from "../components/Filters/Filter.vue";
 import SmallCard from "../components/Pokemon/SmallCard.vue";
 import Top from "../components/Button/Top.vue";
 
@@ -28,15 +21,13 @@ export default {
   name: "All",
   store: store,
   components: {
-    choice: Choice,
-    searchbar: Searchbar,
-    selection: Selection,
+    filt: Filter,
     smallCard: SmallCard,
     topButton: Top,
   },
   data() {
     return {
-      filtreType: "",
+      type: "",
       searchPoke: "",
     };
   },
@@ -123,11 +114,8 @@ export default {
           });
       }
     },
-    changementListe(nvFiltre) {
-      this.filtreType = nvFiltre;
-    },
-    recherchePoke(nvPoke) {
-      this.searchPoke = nvPoke;
+    choixType(nvType) {
+      this.type = nvType;
     },
   },
   computed: {
@@ -138,7 +126,7 @@ export default {
             .toLowerCase()
             .includes(this.searchPoke.toLowerCase());
         } else {
-          return pokemon.type.includes(this.filtreType);
+          return pokemon.type.includes(this.type);
         }
       });
     },

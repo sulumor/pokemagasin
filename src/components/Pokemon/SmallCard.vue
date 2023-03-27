@@ -35,7 +35,6 @@ export default {
 
 <style>
 .card {
-  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.7);
   width: 150px;
   height: 250px;
   border-radius: 15px;
@@ -56,6 +55,10 @@ export default {
 }
 .card .id {
   padding: 10px 10px 0;
+}
+
+.card:hover {
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.7);
 }
 
 .stock {
