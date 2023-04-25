@@ -26,7 +26,11 @@
               class="pic"
             />
             <div class="btn-container">
-              <button v-on:click="plusQuantity(pokemonPanier)" type="button">
+              <button
+                v-on:click="plusQuantity(pokemonPanier)"
+                v-show="pokemons[pokemonPanier.id - 1].stock > 0"
+                type="button"
+              >
                 <img src="../assets/plus.png" />
               </button>
               <button

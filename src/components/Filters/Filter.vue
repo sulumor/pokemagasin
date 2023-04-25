@@ -1,19 +1,13 @@
 <template>
   <div class="filter">
-    <selection
-      v-on:selectPoke="changementListe($event)"
-      v-on:change="selectType(filtreType)"
-    ></selection>
-    <searchbar
-      v-show="this.filtreType == ''"
-      v-on:searchPoke="recherchePoke($event)"
-    ></searchbar>
+    <selection v-on:selectPoke="changementListe($event)"></selection>
+    <searchbar v-on:searchPoke="recherchePoke($event)"></searchbar>
   </div>
 </template>
 
 <script>
 import Searchbar from "./Searchbar.vue";
-import Selection from "./Selection.vue";
+import Selection from "./Select.vue";
 
 export default {
   name: "Filter",
@@ -23,19 +17,20 @@ export default {
   },
   data() {
     return {
-      filtreType: "",
-      searchPoke: "",
+      filtre: [],
     };
   },
   methods: {
     changementListe(nvFiltre) {
-      this.filtreType = nvFiltre;
+      this.filtre[0] = nvFiltre;
+      this.selection(this.filtre);
     },
     recherchePoke(nvPoke) {
-      this.searchPoke = nvPoke;
+      this.filtre = ["", nvPoke];
+      this.selection(this.filtre);
     },
-    selectType(param) {
-      this.$emit("selectType", param);
+    selection(param) {
+      this.$emit("selection", param);
     },
   },
 };
@@ -44,5 +39,7 @@ export default {
 .filter {
   padding-top: 100px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

@@ -38,17 +38,13 @@ export default {
 </script>
 
 <style>
-/*@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");*/
-
 .selectType {
   display: flex;
   width: 40vw;
-  font-family: "Roboto", sans-serif;
-  font-size: 15px;
+  padding: 15px;
 }
 .selectType select {
   padding: 12px 10px;
-  margin: 0 20px;
   width: 100%;
   border-radius: 9999999999px;
   border: 2px solid #3b5ba7;

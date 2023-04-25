@@ -1,6 +1,6 @@
 <template>
   <div href="top">
-    <filt v-on:selectType="choixType($event)" />
+    <filt v-on:selection="choix($event)" />
     <div class="card-container">
       <div v-bind:key="id" v-for="(pokemon, id) in filtre">
         <smallCard v-bind:pokemon="pokemon" />
@@ -114,8 +114,11 @@ export default {
           });
       }
     },
-    choixType(nvType) {
-      this.type = nvType;
+    choix(args) {
+      this.type = args[0];
+      if (args.length > 1) {
+        this.searchPoke = args[1];
+      }
     },
   },
   computed: {

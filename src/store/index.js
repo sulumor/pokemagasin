@@ -31,7 +31,7 @@ export default new Vuex.Store({
     INCREASE_CART(state, id) {
       state.cart.push({
         id: this.state.pokemons[id - 1].id,
-        pic: this.state.pokemons[id - 1].pic2,
+        pic: this.state.pokemons[id - 1].pic[3],
         name: this.state.pokemons[id - 1].name,
         price: this.state.pokemons[id - 1].price,
         stock: this.state.pokemons[id - 1].stock-- - 1,

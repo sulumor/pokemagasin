@@ -47,12 +47,12 @@ export default {
 }
 
 .searchbar input {
+  padding: 12px 10px;
   width: 100%;
-  padding: 10px 20px;
-  letter-spacing: 1.5px;
-  outline: none;
   border-radius: 9999999999px;
   border: 2px solid #3b5ba7;
+  font-weight: 600;
+  outline: none;
   color: #ffcb05;
 }
 .searchbar:focus-within label,
