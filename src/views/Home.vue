@@ -2,8 +2,12 @@
   <div href="top">
     <filt v-on:selection="choix($event)" />
     <div class="card-container">
-      <div v-bind:key="id" v-for="(pokemon, id) in filtre">
-        <smallCard v-bind:pokemon="pokemon" />
+      <div :key="id" v-for="(pokemon, id) in filtre">
+        <smallCard :pokemon="pokemon" />
+      </div>
+      <div v-show="filtre.length === 0">
+        <p>Pas de Pokemon disponible avec cette recherche !!!</p>
+        <p>Veuillez réessayer !</p>
       </div>
     </div>
     <topButton />

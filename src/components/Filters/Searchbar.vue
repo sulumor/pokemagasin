@@ -53,7 +53,6 @@ export default {
   border: 2px solid #3b5ba7;
   font-weight: 600;
   outline: none;
-  color: #ffcb05;
 }
 .searchbar:focus-within label,
 .searchbar.active label {
