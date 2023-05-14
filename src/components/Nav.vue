@@ -2,13 +2,14 @@
   <nav class="nav-container">
     <ul>
       <li>
-        <router-link to="/"
-          class="title">POKEMAGASIN <span>(1ère génération)</span></router-link>
+        <router-link to="/" class="title"
+          >POKEMAGASIN <span>(1ère génération)</span></router-link
+        >
       </li>
-      <li >
+      <li>
         <router-link to="/panier" class="cartPic"
           ><img src="../assets/add-to-basket.png" alt="" />
-        <p v-show="cart.length > 0">{{ cart.length }}</p>
+          <p v-show="cart.length > 0">{{ quantityPoke }}</p>
         </router-link>
       </li>
     </ul>
@@ -20,13 +21,20 @@ import { mapState } from "vuex";
 
 export default {
   name: "Nav",
-  computed:{
+  computed: {
+    quantityPoke() {
+      let quantity = 0;
+      for (let i = 0; i < this.cart.length; i++) {
+        quantity = quantity + this.cart[i].quantity;
+      }
+      return quantity;
+    },
     ...mapState(["cart"]),
-  }
+  },
 };
 </script>
 
-<style scoped>
+<style>
 .nav-container {
   width: 100%;
   height: 70px;
@@ -88,5 +96,4 @@ export default {
     font-size: 15px;
   }
 }
-
 </style>

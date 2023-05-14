@@ -30,12 +30,12 @@ export default {
     },
   },
 };
+
+//garder le button 'allumer' lors que l'on clique dessus
 </script>
 
-
-<style scoped>
+<style>
 .listeType {
-  padding-top: 100px;
   width: 100%;
   display: flex;
   justify-content: space-around;

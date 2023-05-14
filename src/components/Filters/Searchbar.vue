@@ -18,7 +18,7 @@ export default {
     };
   },
   methods: {
-    searchPoke: function (searchInp) {
+    searchPoke: function(searchInp) {
       this.$emit("searchPoke", searchInp);
       const inp = document.querySelector(".searchbar");
       if (this.searchInp !== "") {
@@ -31,9 +31,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .searchbar {
-  width: 100%;
+  width: 40vw;
   position: relative;
   padding: 15px;
 }
@@ -42,26 +42,21 @@ export default {
   top: 50%;
   transform: translateY(-50%);
   padding-left: 35px;
-  font-family: "Chakra Petch", sans-serif;
   pointer-events: none;
   transition: all 0.8s ease-in-out;
 }
 
 .searchbar input {
-  width: 40%;
-  padding: 10px 20px;
-  font-size: 20px;
-  letter-spacing: 1.5px;
-  outline: none;
+  padding: 12px 10px;
+  width: 100%;
   border-radius: 9999999999px;
   border: 2px solid #3b5ba7;
-  color: #ffcb05;
+  font-weight: 600;
+  outline: none;
 }
 .searchbar:focus-within label,
 .searchbar.active label {
-  transform: translate(40vw, -50%);
-  color: #ffcb05;
-  font-size: 30px;
+  display: none;
 }
 @media screen and (max-width: 800px) {
   .searchbar label {
@@ -69,10 +64,6 @@ export default {
   }
   .searchbar input {
     width: 60%;
-  }
-  .searchbar:focus-within label,
-  .searchbar.active label {
-    display: none;
   }
 }
 @media screen and (max-width: 550px) {

@@ -1,64 +1,41 @@
 <template>
-  <div class="home">
-    <choice v-on:filtrePoke="changementListe($event)"></choice>
-    <selection v-on:selectPoke="changementListe($event)"></selection>
-    <searchbar
-      v-show="this.filtreType == ''"
-      v-on:searchPoke="recherchePoke($event)"
-    ></searchbar>
+  <div href="top">
+    <filt v-on:selection="choix($event)" />
     <div class="card-container">
-      <div
-        v-bind:key="id"
-        v-for="(pokemon, id) in filtre"
-        v-bind:style="{ background: cardColor(pokemon) }"
-        class="card"
-      >
-        <router-link v-bind:to="`/${pokemon.id}/${pokemon.name}`">
-          <p class="id" :id="pokemon.id"># {{ pokemon.id }}</p>
-          <p v-show="pokemon.stock === 1" class="stock">Dernier dispo</p>
-          <img v-bind:src="pokemon.pic1" :alt="pokemon.name" class="picPoke" />
-          <div class="namePrice">
-            <span class="name">{{ pokemon.name }}</span>
-            <span class="price">{{ pokemon.price }} €</span>
-          </div>
-        </router-link>
-        <p v-show="pokemon.stock === 0" class="sold-out">Rupture de stock</p>
-        <div v-show="pokemon.stock > 0" class="addCart">
-          <button v-on:click="addToCart(pokemon)" type="button">
-            <img src="../assets/add-to-basket.png" />
-            <p>Ajouter au panier</p>
-          </button>
-        </div>
+      <div :key="id" v-for="(pokemon, id) in filtre">
+        <smallCard :pokemon="pokemon" />
+      </div>
+      <div v-show="filtre.length === 0">
+        <p>Pas de Pokemon disponible avec cette recherche !!!</p>
+        <p>Veuillez réessayer !</p>
       </div>
     </div>
+    <topButton />
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import store from "../store/index";
-import Choice from "../components/Choice";
-import Selection from "../components/Selection";
-import Searchbar from "../components/Searchbar";
+import Filter from "../components/Filters/Filter.vue";
+import SmallCard from "../components/Pokemon/SmallCard.vue";
+import Top from "../components/Button/Top.vue";
 
 export default {
   name: "All",
   store: store,
   components: {
-    choice: Choice,
-    searchbar: Searchbar,
-    selection: Selection,
+    filt: Filter,
+    smallCard: SmallCard,
+    topButton: Top,
   },
   data() {
     return {
-      filtreType: "",
+      type: "",
       searchPoke: "",
     };
   },
   methods: {
-    addToCart(pokemon) {
-      this.$store.dispatch("addToCart", pokemon.id);
-    },
     fetchPokemonComplet(pokemon) {
       if (this.$store.state.pokemons.length < 151) {
         const objPokemon = {};
@@ -84,10 +61,12 @@ export default {
         axios
           .get(pokemon.url)
           .then((pokeData) => {
-            objPokemon.pic1 =
-              pokeData.data.sprites.other["official-artwork"].front_default;
-            objPokemon.pic2 =
-              pokeData.data.sprites.other.dream_world.front_default;
+            objPokemon.pic = [
+              pokeData.data.sprites.other["official-artwork"].front_default,
+              pokeData.data.sprites.other.dream_world.front_default,
+              pokeData.data.sprites.other.home.front_default,
+              pokeData.data.sprites.front_default,
+            ];
             objPokemon.type = pokeData.data.types[0].type.name;
             objPokemon.id = pokeData.data.id;
             objPokemon.life = pokeData.data.stats[0].base_stat;
@@ -97,7 +76,7 @@ export default {
             objPokemon.height = pokeData.data.height;
             objPokemon.weight = pokeData.data.weight;
             objPokemon.stock = Math.trunc(Math.random() * 5);
-            objPokemon.price = Math.trunc(
+            objPokemon.price = Math.round(
               ((objPokemon.life +
                 objPokemon.attack +
                 objPokemon.defense +
@@ -139,15 +118,11 @@ export default {
           });
       }
     },
-    cardColor(pokemon) {
-      let color = this.$store.state.types[pokemon.type];
-      return color;
-    },
-    changementListe(nvFiltre) {
-      this.filtreType = nvFiltre;
-    },
-    recherchePoke(nvPoke) {
-      this.searchPoke = nvPoke;
+    choix(args) {
+      this.type = args[0];
+      if (args.length > 1) {
+        this.searchPoke = args[1];
+      }
     },
   },
   computed: {
@@ -158,7 +133,7 @@ export default {
             .toLowerCase()
             .includes(this.searchPoke.toLowerCase());
         } else {
-          return pokemon.type.includes(this.filtreType);
+          return pokemon.type.includes(this.type);
         }
       });
     },
@@ -172,4 +147,20 @@ export default {
   },
 };
 </script>
-<style scoped src="./styles/home.css"></style>
+<style>
+.card-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 90%;
+  padding-top: 15px;
+}
+
+@media screen and (max-width: 550px) {
+  .card-container {
+    padding: 0;
+  }
+}
+</style>
