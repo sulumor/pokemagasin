@@ -6,13 +6,8 @@
       <empty-cart v-show="cart == ''" />
       <div class="englobant">
         <div style="flex: 5">
-          <div
-            v-bind:key="id"
-            v-for="(pokemonPanier, id) in cart"
-            v-bind:style="{ background: cardColor(pokemonPanier) }"
-            class="panier"
-          >
-            <cart v-bind:pokemonPanier="pokemonPanier" v-bind:id="id" />
+          <div :key="id" v-for="(pokemonPanier, id) in cart" class="panier">
+            <cart :pokemonPanier="pokemonPanier" :id="id" />
           </div>
         </div>
         <resume />
@@ -31,14 +26,8 @@
   export default {
     name: "Panier",
     components: { Retour, EmptyCart, Cart, Resume },
-    methods: {
-      cardColor: function(pokemonPanier) {
-        let color = this.types[pokemonPanier.type];
-        return color;
-      },
-    },
     computed: {
-      ...mapState(["cart", "types"]),
+      ...mapState(["cart"]),
     },
   };
 </script>
@@ -70,7 +59,7 @@
   }
 
   .back {
-    top: -15px;
+    top: 15px;
   }
 
   @media screen and (max-width: 900px) {

@@ -1,3 +1,3 @@
 # pokemagasin
 
-E-commerce fictif fait suite à une formation sur VueJS utilisant l'api pokeapi.co
+E-commerce fictif sur VueJS V2 utilisant l'api pokeapi.co

@@ -4,8 +4,8 @@
   </p>
 </template>
 <script>
-export default {
-  name: "SoldOut",
-};
+  export default {
+    name: "SoldOut",
+  };
 </script>
 <style></style>
