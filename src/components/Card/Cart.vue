@@ -1,10 +1,13 @@
 <template>
-  <div class="ligne">
+  <div
+    class="ligne"
+    :style="{ background: this.$store.state.types[pokemonPanier.type] }"
+  >
     <span class="prix">{{ pokemonPanier.price }} €</span>
     <img :src="pokemonPanier.pic" :alt="pokemonPanier.name" class="pic" />
     <div class="btn-container">
       <plus
-        v-bind:pokemonPanier="pokemonPanier"
+        :pokemonPanier="pokemonPanier"
         v-show="pokemons[pokemonPanier.id - 1].stock > 0"
       />
       <soldOut v-show="pokemons[pokemonPanier.id - 1].stock == 0" />
@@ -12,8 +15,8 @@
     </div>
     <div class="quantity">
       <p class="desktop">
-        {{ pokemonPanier.quantity }} {{ pokemonPanier.name
-        }}<span v-show="pokemonPanier.quantity > 1">s</span>
+        {{ pokemonPanier.quantity }} {{ pokemonPanier.name }}
+        <span v-show="pokemonPanier.quantity > 1">s</span>
       </p>
       <p class="mobile"></p>
     </div>

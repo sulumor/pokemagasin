@@ -9,17 +9,19 @@
   </div>
 </template>
 <script>
-export default {};
+  export default {
+    name: "GoTo",
+  };
 </script>
 <style>
-.goTo {
-  text-align: center;
-}
-.goTo h6 {
-  color: #ffcb05;
-}
-.goTo a {
-  color: #3b5ba7;
-  margin-right: 5px;
-}
+  .goTo {
+    text-align: center;
+  }
+  .goTo h6 {
+    color: #ffcb05;
+  }
+  .goTo a {
+    color: #3b5ba7;
+    margin-right: 5px;
+  }
 </style>

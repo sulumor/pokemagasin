@@ -34,7 +34,7 @@
     cursor: pointer;
     border: none;
     border-radius: 50%;
-    padding: 12.5px;
+    padding: 10px;
   }
   .delete img {
     width: 20px;

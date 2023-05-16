@@ -33,27 +33,19 @@
       quantityPoke() {
         let quantity = 0;
         for (let i = 0; i < this.cart.length; i++) {
-          quantity = quantity + this.cart[i].quantity;
+          quantity += this.cart[i].quantity;
         }
         return quantity;
       },
       amountPoke() {
         let total = 0;
         for (let i = 0; i < this.cart.length; i++) {
-          total = total + this.cart[i].quantity * this.cart[i].price;
+          total += this.cart[i].quantity * this.cart[i].price;
         }
         return total;
       },
       portPoke() {
-        let frais_de_port = 0;
-        if (this.quantityPoke < 3) {
-          frais_de_port = 25;
-        } else if (this.quantityPoke < 5) {
-          frais_de_port = 100;
-        } else {
-          frais_de_port = 200;
-        }
-        return frais_de_port;
+        return this.quantityPoke < 3 ? 25 : this.quantityPoke < 5 ? 100 : 200;
       },
       ...mapState(["cart"]),
     },
