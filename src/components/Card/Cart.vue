@@ -15,8 +15,7 @@
     </div>
     <div class="quantity">
       <p class="desktop">
-        {{ pokemonPanier.quantity }} {{ pokemonPanier.name }}
-        <span v-show="pokemonPanier.quantity > 1">s</span>
+        {{ pokemonPanier.quantity }} {{ pokemonPanier.name }}<span v-show="pokemonPanier.quantity > 1">s</span>
       </p>
       <p class="mobile"></p>
     </div>
